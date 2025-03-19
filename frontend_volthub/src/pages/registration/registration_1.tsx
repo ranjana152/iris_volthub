@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Button, message, Steps, theme } from 'antd';
+import { Button, Steps, theme } from 'antd';
+import { useNavigate } from 'react-router-dom';
 import Content_1 from '../content_1';
 import Content_2 from './content_2';
 const steps = [
@@ -13,6 +14,7 @@ const steps = [
     },
 ];
 const Registration_1: React.FC = () => {
+    const navigate = useNavigate();
     const { token } = theme.useToken();
     const [current, setCurrent] = useState(0);
 
@@ -32,7 +34,7 @@ const Registration_1: React.FC = () => {
         color: token.colorTextTertiary,
         backgroundColor: token.colorFillAlter,
         borderRadius: token.borderRadiusLG,
-        border: `1px dashed ${token.colorBorder}`,
+        border: `1px  ${token.colorBorder}`,
         marginTop: 16,
     };
 
@@ -50,7 +52,7 @@ const Registration_1: React.FC = () => {
                     </Button>
                 )}
                 {current === steps.length - 1 && (
-                    <Button type="primary" onClick={() => message.success('Processing complete!')}>
+                    <Button type="primary" onClick={() => navigate('/')}>
                         Submit
                     </Button>
                 )}

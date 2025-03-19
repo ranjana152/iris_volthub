@@ -9,11 +9,11 @@ const Registration_layout: React.FC = () => {
     } = theme.useToken();
 
     return (
-        <Layout>
+        <Layout style={{ height: '100vh', width: '210vh', margin: 'auto' }}>
             <Header
                 style={{ display: 'flex', alignItems: 'center', backgroundColor: 'lightgray' }}>
                 <Flex wrap gap='large'>
-                    <div style={{ fontSize: '22px', fontWeight: 'bold', color: 'black', marginRight: '160px' }}> VoltHub</div>
+                    <div style={{ fontSize: '22px', fontWeight: 'bold', color: 'black', marginRight: '160px' }}> VOLTHUB</div>
                     <div style={{ fontSize: '18px', color: 'gray' }}> Register Yourself!</div>
                 </Flex>
                 <div className="demo-logo" />
@@ -33,6 +33,7 @@ const Registration_layout: React.FC = () => {
             <Content style={{
                 padding: '0 48px',
                 width: '800px',
+                margin: 'auto'
             }}>
                 <Breadcrumb style={{ margin: '16px 0' }}>
                     <Breadcrumb.Item>

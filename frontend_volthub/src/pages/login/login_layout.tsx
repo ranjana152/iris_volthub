@@ -16,10 +16,10 @@ const Login_layout: React.FC = () => {
 
   const containerStyle: React.CSSProperties = {
     position: 'relative',
-    height: '400px',
-    width: '600px',
-    paddingTop: 200,
-    marginLeft: 50,
+    height: '300px',
+    width: '400px',
+    padding: 200,
+    marginLeft: 350,
     overflow: 'hidden',
     background: 'lightgray',
     color: '#000',
@@ -33,7 +33,7 @@ const Login_layout: React.FC = () => {
       VOLTHUB<br />
       EV Slot Booking System
       <div style={{ padding: '20px' }}>
-        <Button type="primary" onClick={showDrawer} style={{ marginRight: '30px' }}>
+        <Button type="primary" onClick={showDrawer} style={{ marginRight: '50px' }}>
           Login
         </Button>
         <Button type="primary" onClick={() => navigate('/register')}>
