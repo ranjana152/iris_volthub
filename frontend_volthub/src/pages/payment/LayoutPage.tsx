@@ -6,7 +6,7 @@ import {
   BellOutlined,
   PhoneOutlined,
   ExclamationCircleOutlined,
-  // CheckCircleOutlined
+  HomeOutlined,
 } from "@ant-design/icons";
 import {
   Button,
@@ -19,7 +19,7 @@ import {
   Flex,
   Avatar,
   Modal,
-  Input
+  Input,
 } from "antd";
 import { FiMenu } from "react-icons/fi";
 import { FaMap } from "react-icons/fa";
@@ -29,27 +29,24 @@ import { useNavigate } from "react-router-dom";
 const { Header, Sider, Content } = Layout;
 const { Title, Text, Link } = Typography;
 
-interface LayoutProp{
-  Component:React.FC;
+interface LayoutProp {
+  Component: React.FC;
 }
 
-const LayoutPage: React.FC<LayoutProp> = ({Component}) => {
+const LayoutPage: React.FC<LayoutProp> = ({ Component }) => {
   // const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
   const [isInsufficient, setInsufficient] = useState<boolean>(false);
   const [displayAmount, setdisplayAmount] = useState<boolean>(false);
   const [amount, setamount] = useState("");
 
-  const [collapsed, setCollapsed] = useState<boolean>(true);
+  const navigate = useNavigate();
+  const handleMenuClick = (e: any) => {
+    navigate(e.key);
+  };
+  const [collapsed, setCollapsed] = useState(true);
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
-  const navigate = useNavigate();
-
-  const handleClick = (e: { key: string }) => {
-    if (e.key === "3") {
-      navigate("/MyBookings");
-    }
-  };
 
   return (
     <Layout style={{ width: "210vh", height: "100vh" }}>
@@ -70,30 +67,35 @@ const LayoutPage: React.FC<LayoutProp> = ({Component}) => {
         <Menu
           theme="dark"
           mode="inline"
-          onClick={handleClick}
+          onClick={handleMenuClick}
           items={[
             {
-              key: "1",
+              key: "/dashboard",
+              icon: <HomeOutlined />,
+              label: "Dashboard",
+            },
+            {
+              key: "/hh",
               icon: <UserOutlined />,
               label: "Profile",
             },
             {
-              key: "2",
+              key: "/jj",
               icon: <FaMap />,
               label: "Map",
             },
             {
-              key: "3",
+              key: "/j",
               icon: <FileDoneOutlined />,
               label: "MyBookings",
             },
             {
-              key: "4",
+              key: "/ll",
               icon: <BellOutlined />,
               label: "Notification",
             },
             {
-              key: "5",
+              key: "ooo/",
               icon: <PhoneOutlined />,
               label: "Contact",
             },
@@ -108,13 +110,18 @@ const LayoutPage: React.FC<LayoutProp> = ({Component}) => {
             justifyContent: "space-between",
           }}
         >
-          <Title level={3} style={{ margin: "auto 0" }}>
+          <Title
+            level={3}
+            style={{
+              fontFamily: "inherit",
+              margin: "auto 0",
+              fontWeight: "bold",
+            }}
+          >
             VOLTHUB
           </Title>
           <Space>
-            <Button
-             onClick={() => setInsufficient(true)}
-             >
+            <Button onClick={() => setInsufficient(true)}>
               <WalletOutlined
                 style={{ fontSize: "18px", marginRight: "5px" }}
               />
@@ -138,20 +145,14 @@ const LayoutPage: React.FC<LayoutProp> = ({Component}) => {
             justifyContent: "center",
           }}
         >
-          <Component/>
+          <Component />
         </Content>
       </Layout>
 
       {/* booking confirmed */}
-     
 
       {/* insufficient balance */}
-      <Modal
-        open={isInsufficient}
-        footer={null}
-        closable={false}
-        centered
-      >
+      <Modal open={isInsufficient} footer={null} closable={false} centered>
         <Space direction="vertical" align="center" style={{ width: "100%" }}>
           <ExclamationCircleOutlined
             style={{ fontSize: "40px", color: "red" }}
@@ -161,12 +162,12 @@ const LayoutPage: React.FC<LayoutProp> = ({Component}) => {
             <Text>₹560.00</Text>
             <br />
             <Row justify="space-between" style={{ width: "120%" }}>
-              <Button onClick={()=>setInsufficient(false)}>Cancel</Button>
+              <Button onClick={() => setInsufficient(false)}>Cancel</Button>
               <Button
                 type="primary"
                 onClick={() => {
                   setdisplayAmount(true);
-                  setInsufficient(false)
+                  setInsufficient(false);
                 }}
               >
                 Add Money to your Wallet
@@ -175,10 +176,14 @@ const LayoutPage: React.FC<LayoutProp> = ({Component}) => {
           </Space>
         </Space>
       </Modal>
-
       {/* enter amount */}
-
-      <Modal open={displayAmount} footer={null} closable={true} centered onCancel={()=>setdisplayAmount(false)}>
+      <Modal
+        open={displayAmount}
+        footer={null}
+        closable={true}
+        centered
+        onCancel={() => setdisplayAmount(false)}
+      >
         <Space direction="vertical" align="center" style={{ width: "100%" }}>
           <Input
             placeholder="₹ Amount"
@@ -221,7 +226,6 @@ const LayoutPage: React.FC<LayoutProp> = ({Component}) => {
           </Flex>
         </Space>
       </Modal>
-
     </Layout>
   );
 };
