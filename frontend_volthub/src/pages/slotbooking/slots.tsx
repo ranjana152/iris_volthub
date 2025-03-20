@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Row, Col, Typography, Flex, Button } from "antd";
+import { Card, Typography, Flex, Button } from "antd";
 
 const { Title } = Typography;
 const slotData = [
