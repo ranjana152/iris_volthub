@@ -7,7 +7,7 @@ const ChargerCard: React.FC = () => {
     return (
         <Card
             style={{
-                width: 160,
+                width: 100,
                 borderRadius: 12,
                 border: "1px solid black",
                 textAlign: "center",
@@ -24,10 +24,9 @@ const ChargerCard: React.FC = () => {
                 style={{
                     backgroundColor: "#7DA3F5",
                     color: "black",
-                    fontWeight: "bold",
                     padding: "5px",
-                    fontSize: "16px",
-                    fontFamily: "IBM Plex Mono",
+                    fontSize: "14px",
+                    fontFamily: "inherit",
                     borderTopLeftRadius: 10,
                     borderTopRightRadius: 10,
                 }}
@@ -43,11 +42,11 @@ const ChargerCard: React.FC = () => {
                         borderRadius: "50%",
                     }}
                 ></div>
-                <Text style={{ fontSize: 18, fontFamily: "IBM Plex Mono" }}>CCS-2</Text>
+                <Text style={{ fontSize: 14, fontFamily: "inherit" }}>CCS-2</Text>
             </Flex>
-            <Divider />
+            <Divider style={{margin:0}} />
             <Flex justify="center" style={{ padding: "5px" }}>
-                <Link style={{ fontSize: 14, fontFamily: "IBM Plex Mono", color: 'black' }}>View tariff</Link>
+                <Link style={{ fontSize: 12, fontFamily: "inherit", color: 'gray' }}>View tariff</Link>
             </Flex>
         </Card>
     );

@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Space, Table, Tag, Button, Modal } from 'antd';
+import { Space, Table, Tag, Button } from 'antd';
 import type { TableProps } from 'antd';
-import Slot_content1 from '../slotbooking/slot_content1';
-
+import ViewConnectorModal from './viewModal';
 interface DataType {
     key: string;
     stationname: string;
@@ -12,24 +10,23 @@ interface DataType {
     connectors: string[];
 }
 const Table_content: React.FC = () => {
-    const [loading, setLoading] = useState(false);
+    // const [loading, setLoading] = useState(false);
     const [open, setOpen] = useState(false);
-    const navigate = useNavigate();
-    const showModal = () => {
-        setOpen(true);
-    };
+    // const showModal = () => {
+    //     setOpen(true);
+    // };
 
-    const handleOk = () => {
-        setLoading(true);
-        setTimeout(() => {
-            setLoading(false);
-            setOpen(false);
-        }, 3000);
-    };
+    // const handleOk = () => {
+    //     setLoading(true);
+    //     setTimeout(() => {
+    //         setLoading(false);
+    //         setOpen(false);
+    //     }, 3000);
+    // };
 
-    const handleCancel = () => {
-        setOpen(false);
-    };
+    // const handleCancel = () => {
+    //     setOpen(false);
+    // };
 
     const columns: TableProps<DataType>['columns'] = [
         {
@@ -73,7 +70,8 @@ const Table_content: React.FC = () => {
             key: 'action',
             render: () => (
                 <Space size="middle">
-                    <Button type="link" onClick={showModal}>View</Button>
+                    <Button type="link" onClick={() => setOpen(true)}>View</Button>
+                    <ViewConnectorModal open={open} onClose={() => setOpen(false)} />
                 </Space>
             ),
         },
@@ -106,22 +104,6 @@ const Table_content: React.FC = () => {
     return (
         <>
             <Table<DataType> columns={columns} dataSource={data} />
-            <Modal
-                open={open}
-                title="Choose Connectors"
-                onOk={handleOk}
-                onCancel={handleCancel}
-                footer={[
-                    <Button key="back" onClick={handleCancel}>
-                        Return
-                    </Button>,
-                    <Button key="submit" type="primary" loading={loading} onClick={() => navigate('/slotbooking')}>
-                        Submit
-                    </Button>,
-                ]}
-            >
-                <Slot_content1 />
-            </Modal>
         </>
     );
 };

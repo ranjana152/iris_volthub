@@ -4,17 +4,25 @@ import {
     FileDoneOutlined,
     BellOutlined,
     PhoneOutlined,
-    WalletOutlined
+    WalletOutlined,
+    HomeOutlined
 } from '@ant-design/icons';
 import { Button, Layout, Menu, theme, Flex, Typography, Space, Avatar } from 'antd';
 import { FiMenu } from "react-icons/fi";
 import { FaMap } from "react-icons/fa";
 import { RxCross2 } from "react-icons/rx";
-import DContent_1 from './content_1';
+import { useNavigate } from 'react-router-dom';
 
 const { Header, Sider, Content } = Layout;
 const { Text, Title, Link } = Typography;
-const Dashboard_layout: React.FC = () => {
+interface DashboardLayoutProps {
+    Component: React.FC;
+}
+const Dashboard_layout: React.FC<DashboardLayoutProps> = ({ Component }) => {
+    const navigate = useNavigate();
+    const handleMenuClick = (e: any) => {
+        navigate(e.key);
+    };
     const [collapsed, setCollapsed] = useState(true);
     const {
         token: { colorBgContainer, borderRadiusLG },
@@ -36,31 +44,37 @@ const Dashboard_layout: React.FC = () => {
                     }}
                 />
                 <Menu
+                    onClick={handleMenuClick}
                     theme="dark"
                     mode="inline"
                     items={[
                         {
-                            key: '1',
+                            key: '/dashboard',
+                            icon: <HomeOutlined />,
+                            label: 'Dashboard',
+                        },
+                        {
+                            key: '/hh',
                             icon: <UserOutlined />,
                             label: 'Profile',
                         },
                         {
-                            key: '2',
+                            key: '/jj',
                             icon: <FaMap />,
                             label: 'Map',
                         },
                         {
-                            key: '3',
+                            key: '/j',
                             icon: <FileDoneOutlined />,
                             label: 'MyBookings',
                         },
                         {
-                            key: '4',
+                            key: '/ll',
                             icon: <BellOutlined />,
                             label: 'Notification',
                         },
                         {
-                            key: '5',
+                            key: 'ooo/',
                             icon: <PhoneOutlined />,
                             label: 'Contact',
                         },
@@ -91,7 +105,7 @@ const Dashboard_layout: React.FC = () => {
                         borderRadius: borderRadiusLG,
                     }}
                 >
-                    <DContent_1 />
+                    <Component />
                 </Content>
             </Layout>
         </Layout>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Steps, theme } from 'antd';
 import { useNavigate } from 'react-router-dom';
-import Content_1 from '../content_1';
+import Content_1 from './content_1';
 import Content_2 from './content_2';
 const steps = [
     {
