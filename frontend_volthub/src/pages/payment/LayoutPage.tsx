@@ -6,17 +6,15 @@ import {
   BellOutlined,
   PhoneOutlined,
   ExclamationCircleOutlined,
-  CheckCircleOutlined
+  // CheckCircleOutlined
 } from "@ant-design/icons";
 import {
   Button,
   Layout,
   Menu,
   theme,
-  Card,
   Typography,
   Row,
-  Divider,
   Space,
   Flex,
   Avatar,
@@ -31,10 +29,12 @@ import { useNavigate } from "react-router-dom";
 const { Header, Sider, Content } = Layout;
 const { Title, Text, Link } = Typography;
 
+interface LayoutProp{
+  Component:React.FC;
+}
 
-
-const ConfirmationPage: React.FC = () => {
-  const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
+const LayoutPage: React.FC<LayoutProp> = ({Component}) => {
+  // const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
   const [isInsufficient, setInsufficient] = useState<boolean>(false);
   const [displayAmount, setdisplayAmount] = useState<boolean>(false);
   const [amount, setamount] = useState("");
@@ -138,89 +138,12 @@ const ConfirmationPage: React.FC = () => {
             justifyContent: "center",
           }}
         >
-          <Card
-            style={{ width: "600px", padding: "20px", borderRadius: "10px" }}
-          >
-            <Title level={5}>The Park Zone Connect, Avinashi Rd</Title>
-            <Text type="secondary">
-              4, Avinashi Road, Civil Aerodrome Post, Coimbatore
-            </Text>
-
-            <Divider />
-
-            <Title level={5}>Charger A | Charge Point 1</Title>
-            <Text>AC Type-2</Text>
-            <br />
-            <Text strong>₹38.85 / 15 mins (Estimated*)</Text>
-            <br />
-            <Text>Capacity: 7.4kW</Text>
-            <br />
-            <Text>
-              Selected Session: <strong>1.15 AM - 2.00 AM (45 Mins)</strong>
-            </Text>
-            <br />
-            <Text>
-              Date: <strong>13 Jan 2025</strong>
-            </Text>
-
-            <Divider />
-
-            {/* Fee Details */}
-            <Row justify="space-between">
-              <Text>Session fee</Text>
-              <Text>₹470.00</Text>
-            </Row>
-            <Row justify="space-between">
-              <Text>Booking fee</Text>
-              <Text>₹90.00</Text>
-            </Row>
-            <Row justify="space-between">
-              <Text strong>Total Amount</Text>
-              <Text strong>₹560.00</Text>
-            </Row>
-
-            {/* Buttons */}
-            <Space
-              style={{
-                width: "100%",
-                marginTop: "20px",
-                display: "flex",
-                justifyContent: "center",
-              }}
-            >
-              <Button
-                style={{
-                  background: "#E0E0E0",
-                  border: "none",
-                  width: "120px",
-                }}
-              >
-                Edit
-              </Button>
-              <Button
-                type="primary"
-                style={{ width: "120px" }}
-                onClick={()=>setIsModalVisible(true)}
-              >
-                Confirm
-              </Button>
-            </Space>
-          </Card>
+          <Component/>
         </Content>
       </Layout>
 
       {/* booking confirmed */}
      
-      <Modal open={isModalVisible} footer={null} closable={false} centered>
-        <Space direction="vertical" align="center" style={{ width: "100%" }}>
-          <CheckCircleOutlined style={{ fontSize: "40px", color: "green" }} />
-          <Title level={4}>Your Booking is Confirmed!</Title>
-          <Text>₹560.00 has been deducted from your wallet.</Text>
-          <Button type="primary" onClick={()=>setIsModalVisible(false)} >
-            OK
-          </Button>
-        </Space>
-      </Modal>
 
       {/* insufficient balance */}
       <Modal
@@ -303,4 +226,4 @@ const ConfirmationPage: React.FC = () => {
   );
 };
 
-export default ConfirmationPage;
+export default LayoutPage;
