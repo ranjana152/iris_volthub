@@ -18,7 +18,7 @@ function App() {
           <Route path="/register" element={<Registration_layout />} />
           <Route path="/dashboard" element={<Dashboard_layout Component={DContent_1} />} />
           <Route path="/slotdashboard" element={<Dashboard_layout Component={Slot_content2} />} />
-          <Route path="/" element={<LayoutPage Component={ConfirmationPage} />} />
+          <Route path="/confirmationpage" element={<LayoutPage Component={ConfirmationPage} />} />
           <Route path="/MyBookings" element={<LayoutPage Component={MyBookings}/>} />
         </Routes>
       </Router>

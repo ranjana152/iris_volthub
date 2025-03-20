@@ -10,7 +10,7 @@ const Slot_content2: React.FC = () => {
         <Flex wrap gap={100} style={{ margin: 'auto' }}>
             <Flex vertical>
                 <Slot_content1 />
-                <Button type='primary' onClick={() => navigate('/dashboard')} style={{ marginTop: 40 }}>Confirm Booking</Button>
+                <Button type='primary' onClick={() => navigate('/confirmationpage')} style={{ marginTop: 40 }}>Confirm Booking</Button>
             </Flex>
             <Slot_selection />
         </Flex>
