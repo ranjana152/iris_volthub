@@ -25,3 +25,8 @@ dist-ssr
 
 #nodemodules
 node_modules 
+package-lock.json
+
+# pages
+src/pages/ConfirmationPage.tsx
+src/pages/*.tsx
