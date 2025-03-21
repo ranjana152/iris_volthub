@@ -1,12 +1,13 @@
 import React, { useState } from "react";
-import { Button, Card, Typography, Row, Divider, Space,Modal } from "antd";
-import { CheckCircleOutlined} from "@ant-design/icons";
+import { Button, Card, Typography, Row, Divider, Space, Modal } from "antd";
+import { CheckCircleOutlined } from "@ant-design/icons";
+import { useNavigate } from "react-router-dom";
 
 const { Title, Text } = Typography;
 
 const ConfirmationPage: React.FC = () => {
   const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
-
+  const navigate = useNavigate();
   return (
     <>
       <Card style={{ width: "600px", padding: "20px", borderRadius: "10px" }}>
@@ -58,6 +59,7 @@ const ConfirmationPage: React.FC = () => {
           }}
         >
           <Button
+            onClick={() => navigate('/slotdashboard')}
             style={{
               background: "#E0E0E0",
               border: "none",
