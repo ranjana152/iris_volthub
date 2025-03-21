@@ -9,18 +9,18 @@ import {
   ExclamationCircleOutlined
 } from "@ant-design/icons";
 import {
-    Button,
-    Layout,
-    Menu,
-    theme,
-    Typography,
-    Row,
-    Space,
-    Flex,
-    Avatar,
-    Modal,
-    Input,
-  } from "antd";
+  Button,
+  Layout,
+  Menu,
+  theme,
+  Typography,
+  Row,
+  Space,
+  Flex,
+  Avatar,
+  Modal,
+  Input,
+} from "antd";
 import { FiMenu } from "react-icons/fi";
 import { FaMap } from "react-icons/fa";
 import { RxCross2 } from "react-icons/rx";
@@ -81,7 +81,7 @@ const Dashboard_layout: React.FC<DashboardLayoutProps> = ({ Component }) => {
               label: "Map",
             },
             {
-              key: "/j",
+              key: "/MyBookings",
               icon: <FileDoneOutlined />,
               label: "MyBookings",
             },

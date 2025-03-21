@@ -110,7 +110,7 @@ const LayoutPage: React.FC<LayoutProp> = ({ Component }) => {
             justifyContent: "space-between",
           }}
         >
- <Title
+          <Title
             level={3}
             style={{
               fontFamily: "inherit",
